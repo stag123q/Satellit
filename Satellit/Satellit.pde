@@ -1,7 +1,7 @@
 Earth earth;
 ApiStuff apiStuff;
 
-boolean hojre = false, venstre = false;
+boolean hojre = false, venstre = false, hF = false, vF = false;
 String APIkey = "QW2N5L-YCZ77A-4VZWML-4SPT";
 float speed = 1;
 
@@ -26,13 +26,18 @@ void draw() {
 }
 
 void update() {
-  if (hojre == true && speed < 4096) {
+  if (hojre == true && speed < 4096 && !hF) {
     speed = speed*2;
+    hF = true;
   }
-  
-  if (venstre == true && speed > 1) {
+
+  if (venstre == true && speed > 1 && !vF) {
     speed = speed/2;
+    vF = true;
   }
+
+  if (!venstre) vF = false;
+  if (!hojre) hF = false;
 }
 
 //sørger for at controls virker
