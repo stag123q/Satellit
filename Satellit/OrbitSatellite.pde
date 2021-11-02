@@ -1,15 +1,50 @@
-//JSONObject j = loadJSONObject("https://api.n2yo.com/rest/v1/satellite/positions/25544/41.702/-76.014/0/2/&apiKey=GUEEAL-Z7MBKJ-CPLJWD-4SOY");
-//JSONArray positionsJson = j.getJSONArray("positions");
- 
+float lat1 = 30, lon1 = 30, lat2 = 30.0001, lon2 = 30.0001, theta, phi, x, y, z, h = 425, angleb;
+PVector pos, pos1, pos2, xaxis = new PVector(1, 0, 0), raxis, vel;
 
-//JSONObject pos1 = positionsJson.getJSONObject(0);
-//JSONObject pos2 = positionsJson.getJSONObject(1);
+class OrbitSatellite {
 
-//float sat1Lon = pos1.getFloat("satlongitude");
-//float sat1Lat = pos1.getFloat("satlatitude");
+  OrbitSatellite() {
+  }
 
-//float sat2Lon = pos2.getFloat("satlongitude");
-//float sat2Lat = pos2.getFloat("satlatitude");
+  void update() {
+    /*
+     lat1 = snapshot[0][0]
+     lon1 = snapshot[0][1]
+     alt1 = snapshot[0][2]
+     
+     lat1 = snapshot[1][0]
+     lon1 = snapshot[1][1]
+     alt1 = snapshot[1][2]
+     */
 
-//println(sat1Lon,sat1Lat);
-//println(sat2Lon,sat2Lat);
+    pos1 = calculate(lat1, lon1); 
+    pos2 = calculate(lat2, lon2);
+
+    vel = pos1.sub(pos2); //tiden vil altid være 1, så der behøves ikke mere på hastighedsberegningen
+    pos1.add(vel); 
+
+    angleb = PVector.angleBetween(xaxis, pos1);
+    raxis = xaxis.cross(pos1);
+  }
+
+  void draw() {
+    pushMatrix();
+    translate(x, y, z);
+    rotate(angleb, raxis.x, raxis.y, raxis.z);
+    fill(255);
+    box(h, 5, 5);
+    popMatrix();
+  }
+
+  PVector calculate(float lat, float lon) {
+    theta = radians(lat);
+    phi = radians(lon) + PI;
+
+    x = r * cos(theta) * cos(phi);
+    y = -r * sin(theta);
+    z = -r * cos(theta) * sin(phi);
+    pos = new PVector(x, y, z);
+
+    return pos;
+  }
+}
