@@ -13,6 +13,7 @@ void setup() {
 void draw() {
   background(51);
   earth.draw();
+  }
 }
 
 //sørger for at controls virker
