@@ -1,18 +1,21 @@
 Earth earth;
+ApiStuff apiStuff;
 
 boolean hojre = false, venstre = false;
+String APIkey = "QW2N5L-YCZ77A-4VZWML-4SPT";
 float speed = 1;
 
 void setup() {
   size(1920, 1080, P3D);
   frameRate(60);
-
+  apiStuff = new ApiStuff(APIkey);
   earth = new Earth(hojre, venstre);
 }
 
 void draw() {
   update();
   background(51);
+
   text("Current Speed: "+speed+"x times real world", 1400, 50, 0);
   text("Use ← and → to change speed", 1400, 80, 0);
   text("Press spacebar to update trajectory", 1400, 110, 0);
