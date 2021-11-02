@@ -1,10 +1,12 @@
 Earth earth;
+ApiStuff apiStuff;
 
 boolean hojre = false, venstre = false;
+String APIkey = "QW2N5L-YCZ77A-4VZWML-4SPT";
 
 void setup() {
   size(1920, 1080, P3D);
-
+  apiStuff = new ApiStuff(APIkey);
   earth = new Earth(hojre, venstre);
 }
 
