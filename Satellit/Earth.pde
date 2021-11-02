@@ -9,6 +9,8 @@ class Earth {
 
   Earth(boolean right, boolean left) {
     world= loadImage("earth.jpg");
+    sphereDetail(100);
+    noStroke();
     globe = createShape(SPHERE, r);
     globe.setTexture(world);
     rotateRight = right;
@@ -28,9 +30,8 @@ class Earth {
     rotation++;
 
 
-    lights();
+    noLights();
     fill(200);
-    noStroke();
     shape(globe);
   }
 }
