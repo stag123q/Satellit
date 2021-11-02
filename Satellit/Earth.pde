@@ -1,6 +1,6 @@
 PShape globe;
 Table table;
-float angle, r = 400;
+float angle = 0.00006963734567901235, r = 400, rotation;
 PImage world;
 boolean rotateRight, rotateLeft;
 
@@ -14,19 +14,12 @@ class Earth {
     rotateLeft = left;
   }
 
-  void draw() {
+  void draw(float rotationSpeed) {
 
     translate(width*0.5, height*0.5);
     
-    //if (rotateRight && !rotateLeft) {
-    //rotateY(angle);
-    //angle += 0.5;
-    //}
-
-    //if (!rotateRight && rotateLeft) {
-    //  rotateY(angle);
-    //  angle -= 0.05;
-    //}
+    rotateY(angle*rotationSpeed*rotation);
+    rotation++;
     
     lights();
     fill(200);
