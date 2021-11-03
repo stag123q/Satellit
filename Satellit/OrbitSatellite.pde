@@ -27,12 +27,13 @@ class OrbitSatellite {
     raxis = xaxis.cross(pos1);
   }
 
-  void draw() {
+  void draw(PShape satellite) {
     pushMatrix();
     translate(x, y, z);
     rotate(angleb, raxis.x, raxis.y, raxis.z);
-    fill(255);
-    box(h, 5, 5);
+    fill(255,22,12);
+    //box(h, 5, 5);
+    shape(satellite);
     popMatrix();
   }
 

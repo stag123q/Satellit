@@ -19,12 +19,12 @@ class Earth {
     orbitSatellite = new OrbitSatellite();
   }
 
-  void draw(float rotationSpeed) {
+  void draw(float rotationSpeed, PShape satellite) {
 
     translate(width*0.5, height*0.5);
 
     orbitSatellite.update();
-    orbitSatellite.draw();
+    orbitSatellite.draw(satellite);
     
     rotateY(angle*rotationSpeed*rotation);
     rotation++;
