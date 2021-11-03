@@ -19,18 +19,18 @@ class Earth {
     orbitSatellite = new OrbitSatellite();
   }
 
-  void draw(float rotationSpeed) {
+  void draw(float rotationSpeed, float[][] result, boolean uP) {
 
     translate(width*0.5, height*0.5);
 
-    orbitSatellite.update();
+    orbitSatellite.update(result, r, uP, rotationSpeed);
     orbitSatellite.draw();
     
     rotateY(angle*rotationSpeed*rotation);
     rotation++;
 
-    noLights();
-    fill(200);
-    shape(globe);
+    //noLights();
+    //fill(200);
+    //shape(globe);
   }
 }
