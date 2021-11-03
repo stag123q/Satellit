@@ -1,7 +1,8 @@
 Earth earth;
 ApiStuff apiStuff;
 
-boolean hojre = false, venstre = false, hF = false, vF = false;
+int satID = 25544; //ISS norad satelite id
+boolean hojre = false, venstre = false, hF = false, vF = false, test = false;
 String APIkey = "QW2N5L-YCZ77A-4VZWML-4SPT";
 float speed = 1;
 
@@ -15,10 +16,11 @@ void setup() {
 void draw() {
   update();
   background(51);
-
-  text("Current Speed: "+speed+"x times real world", 1400, 50, 0);
+  //if(!test)apiStuff.Update(true, satID, 5);
+  //test = true; //<>//
+  text("Current Speed: "+speed+"x times real world", 1400, 50, 0); //<>//
   text("Use ← and → to change speed", 1400, 80, 0);
-  text("Press spacebar to update trajectory", 1400, 110, 0);
+  text("Press spacebar to update trajectory", 1400, 110, 0); //<>//
   earth.draw(speed);
 
   fill(255, 255, 255);
