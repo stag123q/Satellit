@@ -1,6 +1,6 @@
 PShape globe;
 Table table;
-float angle = 0.00006963734567901235, r = 400, rotation;
+float angle = 0.00006963734567901235, r = 400, rotation, oldRot;
 PImage world;
 boolean rotateRight, rotateLeft;
 OrbitSatellite orbitSatellite;
@@ -19,18 +19,19 @@ class Earth {
     orbitSatellite = new OrbitSatellite();
   }
 
-  void draw(float rotationSpeed, PShape satellite) {
-
+  void draw(float rotationSpeed, float[][] result, boolean uP, PShape satellite) {
+    pushMatrix();
     translate(width*0.5, height*0.5);
-
-    orbitSatellite.update();
-    orbitSatellite.draw(satellite);
-    
-    rotateY(angle*rotationSpeed*rotation);
-    rotation++;
+    oldRot = rotation;
+    rotation = ((angle*rotationSpeed)+oldRot);
+    rotateY(rotation);
 
     noLights();
     fill(200);
     shape(globe);
+
+    orbitSatellite.update(result, r, uP, rotationSpeed);
+    orbitSatellite.draw();
+    popMatrix();
   }
 }

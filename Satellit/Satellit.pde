@@ -1,5 +1,7 @@
 Earth earth;
 ApiStuff apiStuff;
+float[][] snapshot;
+boolean fetch = true;
 
 int satID = 25544; //ISS norad satelite id
 boolean hojre = false, venstre = false, hF = false, vF = false, test = false;
@@ -7,6 +9,8 @@ String APIkey = "QW2N5L-YCZ77A-4VZWML-4SPT";
 float speed = 1;
 PImage backdrop;
 PShape station;
+int tid = 0, tidF = 0;
+
 
 void setup() {
   size(1920, 1080, P3D);
@@ -21,12 +25,22 @@ void setup() {
 void draw() {
   update();
   background(backdrop);
-  //if(!test)apiStuff.Update(true, satID, 5);
-  //test = true; //<>//
-  text("Current Speed: "+speed+"x times real world", 1400, 50, 0); //<>//
+  
+  //UI
+  text("Current Speed: "+speed+"x times real world", 1400, 50, 0);
   text("Use ← and → to change speed", 1400, 80, 0);
-  text("Trajectory is updated every 10 seconds", 1400, 110, 0); //<>//
-  earth.draw(speed, station);
+  text("Trajectory is updated every 10 seconds", 1400, 110, 0);
+
+
+  snapshot = apiStuff.Update(fetch, satID, 2);
+  earth.draw(speed, snapshot, fetch, station);
+  fetch = false;
+  if (millis() > tidF + 10000) {
+    tidF = millis();
+    //println(millis()/1000f); //printer programmet tid i sekunder
+    fetch = true;
+  }
+
 
   fill(255, 255, 255);
   textSize(25);
