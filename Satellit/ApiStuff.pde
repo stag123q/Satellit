@@ -19,6 +19,7 @@ class ApiStuff {
       result = new float[positions][4]; //[2]: the two datapoints. [3]: The longitude, latitude, altitude, and timestamp, in that order
       JSONArray positionsJson = j.getJSONArray("positions");
 
+
       for (int i = 0; i < positions; i++) {
         JSONObject pos1 = positionsJson.getJSONObject(i);
         result[i][0] = pos1.getFloat("satlatitude");
