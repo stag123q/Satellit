@@ -19,7 +19,7 @@ class Earth {
     orbitSatellite = new OrbitSatellite();
   }
 
-  void draw(float rotationSpeed, float[][] result, boolean uP) {
+  void draw(float rotationSpeed, float[][] result, boolean uP, PShape satellite) {
     pushMatrix();
     translate(width*0.5, height*0.5);
     oldRot = rotation;
