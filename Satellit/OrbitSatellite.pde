@@ -19,19 +19,23 @@ class OrbitSatellite {
 
       pos1 = calculate(lat1, lon1); 
       pos2 = calculate(lat2, lon2);
-      
+
       h = alt1 * (earthR/6371) + earthR; //beregner afstanden fra jorden centrum til sateliiten og skalerer den
 
       pos1copy = pos1;
       vel = pos1copy.sub(pos2); //tiden vil altid være 1, så der behøves ikke mere på hastighedsberegningen
-      
+
       linearVel = vel.mag();
-      vel.setMag(linearVel * speed); //speed er den hastighed tiden går i, der også bestemmer jordens rotation
-      nyVar = new PVector(vel.x,vel.y,vel.z);
+      vel.setMag(linearVel*-0.02); //speed er den hastighed tiden går i, der også bestemmer jordens rotation
+      nyVar = new PVector(vel.x, vel.y, vel.z);
     }
-    //println(nyVar);
+    println(nyVar);
     //println(updatePos);
-    pos1.add(nyVar); 
+    //pos1.add(nyVar); 
+    //println(pos1);
+    x += nyVar.x;
+    y += nyVar.y;
+    z += nyVar.z;
 
     angleb = PVector.angleBetween(xaxis, pos1);
     raxis = xaxis.cross(pos1);
@@ -41,7 +45,7 @@ class OrbitSatellite {
     pushMatrix();
     translate(x, y, z);
     rotate(angleb, raxis.x, raxis.y, raxis.z);
-    fill(255);
+    fill(255,150,150);
     box(5, 5, 5);
     popMatrix();
   }
