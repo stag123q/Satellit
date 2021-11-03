@@ -3,7 +3,8 @@ ApiStuff apiStuff;
 float[][] snapshot;
 boolean fetch = true;
 
-boolean hojre = false, venstre = false, hF = false, vF = false;
+int satID = 25544; //ISS norad satelite id
+boolean hojre = false, venstre = false, hF = false, vF = false, test = false;
 String APIkey = "QW2N5L-YCZ77A-4VZWML-4SPT";
 float speed = 1;
 int tid = 0, tidF = 0;
@@ -25,7 +26,7 @@ void draw() {
   text("Press spacebar to update trajectory", 1400, 110, 0);
 
 
-  snapshot = apiStuff.Update(fetch, 25544);
+  snapshot = apiStuff.Update(fetch, satID, 2);
   earth.draw(speed, snapshot, fetch);
   fetch = false;
   if (millis() > tidF + 10000) {
@@ -33,7 +34,6 @@ void draw() {
     //println(millis()/1000f); //printer programmet tid i sekunder
     fetch = true;
   }
-
 
   fill(255, 255, 255);
   textSize(25);
