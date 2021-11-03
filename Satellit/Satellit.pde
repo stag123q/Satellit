@@ -6,6 +6,7 @@ boolean fetch = true;
 boolean hojre = false, venstre = false, hF = false, vF = false;
 String APIkey = "QW2N5L-YCZ77A-4VZWML-4SPT";
 float speed = 1;
+int tid = 0, tidF = 0;
 
 void setup() {
   size(1920, 1080, P3D);
@@ -26,8 +27,12 @@ void draw() {
 
   snapshot = apiStuff.Update(fetch, 25544);
   earth.draw(speed, snapshot, fetch);
-  
-  fetch = false; //Koden der gør at der fectches efter 10 sek her?
+  fetch = false;
+  if (millis() > tidF + 10000) {
+    tidF = millis();
+    //println(millis()/1000f); //printer programmet tid i sekunder
+    fetch = true;
+  }
 
 
   fill(255, 255, 255);

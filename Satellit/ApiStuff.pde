@@ -25,10 +25,10 @@ class ApiStuff {
       result[0][1] = pos1.getFloat("satlongitude");
       result[0][2] = pos1.getFloat("sataltitude");
       result[0][3] = pos1.getFloat("timestamp");
-      result[1][0] = pos1.getFloat("satlatitude");
-      result[1][1] = pos1.getFloat("satlongitude");
-      result[1][2] = pos1.getFloat("sataltitude");
-      result[1][3] = pos1.getFloat("timestamp");
+      result[1][0] = pos2.getFloat("satlatitude");
+      result[1][1] = pos2.getFloat("satlongitude");
+      result[1][2] = pos2.getFloat("sataltitude");
+      result[1][3] = pos2.getFloat("timestamp");
 
       //Kode der engang var smuk før jeg indså at processings JSON behandler var dum
       /*for (int i=0; i<2; i++) {

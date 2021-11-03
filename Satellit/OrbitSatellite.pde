@@ -1,5 +1,5 @@
 float lat1, lon1, lat2, lon2, alt1, alt2, theta, phi, x, y, z, h, angleb, linearVel;
-PVector pos, pos1, pos1copy, pos2, xaxis = new PVector(1, 0, 0), raxis, vel;
+PVector pos, pos1, pos1copy, pos2, xaxis = new PVector(1, 0, 0), raxis, vel, nyVar;
 
 class OrbitSatellite {
 
@@ -27,9 +27,11 @@ class OrbitSatellite {
       
       linearVel = vel.mag();
       vel.setMag(linearVel * speed); //speed er den hastighed tiden går i, der også bestemmer jordens rotation
+      nyVar = new PVector(vel.x,vel.y,vel.z);
     }
-
-    pos1.add(vel); 
+    //println(nyVar);
+    //println(updatePos);
+    pos1.add(nyVar); 
 
     angleb = PVector.angleBetween(xaxis, pos1);
     raxis = xaxis.cross(pos1);
