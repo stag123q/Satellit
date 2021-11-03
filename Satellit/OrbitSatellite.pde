@@ -40,7 +40,7 @@ class OrbitSatellite {
     translate(x, y, z);
     rotate(angleb, raxis.x, raxis.y, raxis.z);
     fill(255);
-    box(h, 5, 5);
+    box(5, 5, 5);
     popMatrix();
   }
 
