@@ -69,10 +69,10 @@ class OrbitSatellite {
   PVector calculate(float lat, float lon, float alt) {
     theta = radians(lat);
     phi = radians(lon) + PI;
-
+println(h);
     x = (r + h) * cos(theta) * cos(phi);
-    y = (-r + h) * sin(theta);
-    z = (-r + h) * cos(theta) * sin(phi);
+    y = (-r - h) * sin(theta);
+    z = (-r - h) * cos(theta) * sin(phi);
     pos = new PVector(x, y, z);
 
     return pos;
