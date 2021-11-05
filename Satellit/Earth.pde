@@ -31,7 +31,8 @@ class Earth {
     shape(globe);
 
     orbitSatellite.update(result, r, uP, rotationSpeed);
-    orbitSatellite.draw();
+    orbitSatellite.draw(satellite);
     popMatrix();
+    
   }
 }

@@ -1,5 +1,5 @@
 float lat1, lon1, lat2, lon2, alt1, alt2, theta, phi, x, y, z, h, angleb, linearVel;
-PVector pos, pos1, pos1copy, pos2, xaxis = new PVector(1, 0, 0), raxis, vel, nyVar;
+PVector pos, pos1, pos1copy, pos2, xaxis = new PVector(1, 0, 0), raxis, vel, nyVar, heightVec;
 
 class OrbitSatellite {
 
@@ -21,6 +21,10 @@ class OrbitSatellite {
       pos2 = calculate(lat2, lon2);
 
       h = alt1 * (earthR/6371) + earthR; //beregner afstanden fra jorden centrum til sateliiten og skalerer den
+      
+      heightVec = pos1;
+      heightVec.normalize();
+      pos1 = pos1.add(heightVec.setMag(h));
 
       pos1copy = pos1;
       vel = pos1copy.sub(pos2); //tiden vil altid være 1, så der behøves ikke mere på hastighedsberegningen

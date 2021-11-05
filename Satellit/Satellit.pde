@@ -19,14 +19,16 @@ void setup() {
   earth = new Earth(hojre, venstre);
   backdrop = loadImage("spaceBackdrop.jpg");
   station = loadShape("satellite_obj.obj");
-  station.setFill(color(227,36,36));
+  station.setFill(color(227, 36, 36));
 }
 
 void draw() {
   update();
-  background(backdrop);
-  
+  background(0);
+
   //UI
+  fill(255, 255, 255);
+  textSize(25);
   text("Current Speed: "+speed+"x times real world", 1400, 50, 0);
   text("Use ← and → to change speed", 1400, 80, 0);
   text("Trajectory is updated every 10 seconds", 1400, 110, 0);
@@ -40,10 +42,6 @@ void draw() {
     //println(millis()/1000f); //printer programmet tid i sekunder
     fetch = true;
   }
-
-
-  fill(255, 255, 255);
-  textSize(25);
 }
 
 void update() {
