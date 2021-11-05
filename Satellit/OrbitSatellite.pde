@@ -17,8 +17,8 @@ class OrbitSatellite {
       lon2 = snapshot[1][1];
       alt2 = snapshot[1][2];
 
-      pos1 = calculate(lat1, lon1); 
-      pos2 = calculate(lat2, lon2);
+      pos1 = calculate(lat1, lon1, alt1); 
+      pos2 = calculate(lat2, lon2, alt2);
 
       h = alt1 * (earthR/6371) + earthR; //beregner afstanden fra jorden centrum til sateliiten og skalerer den
 
@@ -45,18 +45,18 @@ class OrbitSatellite {
     pushMatrix();
     translate(x, y, z);
     rotate(angleb, raxis.x, raxis.y, raxis.z);
-    fill(255,150,150);
+    fill(255, 150, 150);
     box(5, 5, 5);
     popMatrix();
   }
 
-  PVector calculate(float lat, float lon) {
+  PVector calculate(float lat, float lon, float alt) {
     theta = radians(lat);
     phi = radians(lon) + PI;
 
-    x = r * cos(theta) * cos(phi);
-    y = -r * sin(theta);
-    z = -r * cos(theta) * sin(phi);
+    x = (r + h) * cos(theta) * cos(phi);
+    y = (-r + h) * sin(theta);
+    z = (-r + h) * cos(theta) * sin(phi);
     pos = new PVector(x, y, z);
 
     return pos;
