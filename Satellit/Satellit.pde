@@ -19,7 +19,7 @@ void setup() {
   earth = new Earth(hojre, venstre);
   backdrop = loadImage("spaceBackdrop.jpg");
   station = loadShape("satellite_obj.obj");
-  station.setFill(color(227, 36, 36));
+  station.setFill(color(227, 100, 100));
 }
 
 void draw() {

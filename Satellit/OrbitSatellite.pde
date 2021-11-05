@@ -58,7 +58,7 @@ class OrbitSatellite {
     translate(x, y, z);
     rotate(angleb, raxis.x, raxis.y, raxis.z);
 
-    fill(255,150,150);
+    fill(255,155,155);
     //box(5, 5, 5);
 
     shape(satellite);
