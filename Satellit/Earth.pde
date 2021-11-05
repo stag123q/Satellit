@@ -26,7 +26,7 @@ class Earth {
     rotation = ((angle*rotationSpeed)+oldRot);
     rotateY(rotation);
 
-    noLights();
+    //noLights();
     fill(200);
     shape(globe);
 
