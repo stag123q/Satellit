@@ -1,6 +1,6 @@
 PShape globe;
 Table table;
-float angle = 0.00006963734567901235, r = 400, rotation, oldRot;
+float angle = 0.00006963734567901235, r = 380, rotation, oldRot;
 PImage world;
 boolean rotateRight, rotateLeft;
 OrbitSatellite orbitSatellite;
